@@ -1,6 +1,10 @@
 # Bluetooth
 bluetooth.device.default_name=OnePlus 15
 
+# Display
+vendor.display.enable_spr_bypass=0
+vendor.display.enable_spr=1
+
 # Graphics
 debug.sf.auto_latch_unsignaled=1
 ro.surface_flinger.set_display_power_timer_ms=1000
