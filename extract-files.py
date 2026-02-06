@@ -31,11 +31,20 @@ def lib_fixup_vendor_suffix(lib: str, partition: str, *args, **kwargs):
 lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
+        'libhcsutils',
+        'libpwirisfeature',
         'libPanelChaplin',
-        'libhwconfigurationutil',
+        'vendor.oplus.hardware.camera.aon-V1-ndk',
         'vendor.oplus.hardware.camera_rfi-V3-ndk',
         'vendor.oplus.hardware.cammidasservice-V1-ndk',
+        'vendor.oplus.hardware.cwb-V2-ndk',
         'vendor.oplus.hardware.displaycolorfeature-V1-ndk',
+        'vendor.oplus.hardware.sendextcamcmd-V2-ndk',
+        'vendor.pixelworks.hardware.display@1.0',
+        'vendor.pixelworks.hardware.display@1.1',
+        'vendor.pixelworks.hardware.display@1.2',
+        'vendor.pixelworks.hardware.feature@1.0',
+        'vendor.pixelworks.hardware.feature@1.1',
     ): lib_fixup_vendor_suffix,
 }
 
@@ -46,20 +55,57 @@ blob_fixups: blob_fixups_user_type = {
         .regex_replace(r'(fdSupport += )TRUE;', r'\1FALSE;')
         # Expose AUX cameras
         .regex_replace('SystemCamera =  0;  0;  0;  1;  0; 1;', 'SystemCamera =  0;  0;  0;  0;  0; 0;'),
+    'odm/etc/init/init.camera_process.rc': blob_fixup()
+        .regex_replace('    delete_recursion', '    #delete_recursion'),
     (
         'odm/etc/libnfc-mtp-SN220.conf_24831',
-        'odm/etc/libnfc-mtp-SN220.conf_24863'
+        'odm/etc/libnfc-mtp-SN220.conf_24863',
     ): blob_fixup()
         .regex_replace('(NXPLOG_.*_LOGLEVEL)=0x03', '\\1=0x02')
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
-    ('odm/lib64/libEIS.so', 'odm/lib64/libEISLive.so', 'odm/lib64/libOPAlgoCamFaceBeautyCap.so'): blob_fixup()
+    (
+        'odm/lib64/libAlgoProcess.so',
+        'odm/lib64/libEIS.so',
+        'odm/lib64/libEISLive.so',
+        'odm/lib64/libFaceBeautyJni.so',
+        'odm/lib64/libFaceDistortionCorrection.so',
+        'odm/lib64/libOPAlgoCamAiBeautyFaceRetouchCn.so',
+        'odm/lib64/libOPAlgoCamAiUnifySkin.so',
+        'odm/lib64/libOPAlgoCamFaceBeautyCap.so',
+        'odm/lib64/libaiboost_te.so',
+    ): blob_fixup()
+        .clear_symbol_version('AHardwareBuffer_acquire')
         .clear_symbol_version('AHardwareBuffer_allocate')
         .clear_symbol_version('AHardwareBuffer_describe')
         .clear_symbol_version('AHardwareBuffer_lock')
+        .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
+    'odm/lib64/liboprec_audrec.so': blob_fixup()
+        .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
     'vendor/etc/libnfc-nci.conf': blob_fixup()
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
+    (
+        'odm/lib64/libAlgoProcess.so',
+        'vendor/lib64/libpwirishalwrapper.so',
+        'vendor/lib64/libsdmclient.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V6-ndk.so'),
+    (
+        'vendor/lib64/camera/components/com.qti.node.dewarp.so',
+        'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
+    ): blob_fixup()
+        .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
+    (
+        'vendor/lib64/libcwb_qcom_aidl.so',
+        'vendor/lib64/libhwcsensor.so',
+        'vendor/lib64/libsdmclient.so',
+    ): blob_fixup()
+        .replace_needed('vendor.qti.hardware.display.config-V11-ndk.so', 'vendor.qti.hardware.display.config-V13-ndk.so'),
+    'vendor/lib64/libpwirishalwrapper.so': blob_fixup()
+        .replace_needed('android.hardware.graphics.composer3-V3-ndk.so', 'android.hardware.graphics.composer3-V4-ndk.so'),
+    'vendor/lib64/libsdmcore.so': blob_fixup()
+        .add_needed('libbase.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
