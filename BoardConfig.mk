@@ -4,6 +4,8 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+USE_PREBUILT_KERNEL ?= true
+
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 17062428672
 
@@ -19,7 +21,11 @@ TARGET_OTA_ASSERT_DEVICE := OP611FL1,OP60FFL1
 TARGET_SCREEN_DENSITY := 560
 
 # Kernel
+ifeq ($(USE_PREBUILT_KERNEL), true)
+include device/oneplus/infiniti-kernel/BoardConfig.mk
+else
 TARGET_KERNEL_ADDITIONAL_FLAGS += CONFIG_INFINITI_DTB=y
+endif
 
 # Properties
 TARGET_ODM_PROP += $(DEVICE_PATH)/odm.prop
