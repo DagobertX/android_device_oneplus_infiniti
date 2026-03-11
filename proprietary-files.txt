@@ -1504,16 +1504,6 @@ odm/firmware/fastchg/bms_heating_config.txt
 odm/firmware/fastchg/charging_thermal_config_default.txt
 odm/firmware/fastchg/smart_chg_config_table.txt
 
-# Display calibration data
-my_product/vendor/etc/display_apollo_list_AA601_P_7_A0020_dsc_cmd_mode_panel.xml:vendor/etc/display_apollo_list_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
-my_product/vendor/etc/display_apollo_list_AD296_P_3_A0020_dsc_cmd_mode_panel.xml:vendor/etc/display_apollo_list_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
-odm/etc/display/qdcm_calib_data_AA601_P_7_A0020_dsc_cmd_mode_panel.json
-odm/etc/display/qdcm_calib_data_AD296_P_3_A0020_dsc_cmd_mode_panel.json
-vendor/etc/ltm_config_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
-vendor/etc/ltm_config_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
-vendor/etc/spr_cfg_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
-vendor/etc/spr_cfg_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
-
 # Display (Features)
 odm/etc/init/hw/init.oplus.display.rc
 vendor/bin/feature_enabler_client
@@ -1768,6 +1758,20 @@ vendor/lib64/libtestutils.so
 vendor/lib64/libtinyxml2_1.so
 vendor/lib64/libvmfilexfer.so
 
+# Display calibration data
+my_product/vendor/etc/display_apollo_list_AA601_P_7_A0020_dsc_cmd_mode_panel.xml:vendor/etc/display_apollo_list_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
+my_product/vendor/etc/display_apollo_list_AD296_P_3_A0020_dsc_cmd_mode_panel.xml:vendor/etc/display_apollo_list_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
+odm/etc/display/qdcm_calib_data_AA601_P_7_A0020_dsc_cmd_mode_panel.json
+odm/etc/display/qdcm_calib_data_AD296_P_3_A0020_dsc_cmd_mode_panel.json
+vendor/etc/ltm_config_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
+vendor/etc/ltm_config_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
+vendor/etc/spr_cfg_AA601_P_7_A0020_dsc_cmd_mode_panel.xml
+vendor/etc/spr_cfg_AD296_P_3_A0020_dsc_cmd_mode_panel.xml
+
+# Display firmware
+vendor/firmware/dpAP_full.mbn
+vendor/firmware/dpAP_mini.mbn
+
 # Display postprocessing
 vendor/bin/hw/vendor.qti.hardware.display.color-service
 vendor/bin/ppd
@@ -1781,15 +1785,15 @@ vendor/lib64/vendor.display.color@1.4.so
 vendor/lib64/vendor.display.color@1.5.so
 vendor/lib64/vendor.display.postproc@1.0.so
 
-# Display firmware
-vendor/firmware/dpAP_full.mbn
-vendor/firmware/dpAP_mini.mbn
-
 # Dolby Vision
 odm/etc/dolby/display/dolby_vision.cfg
 odm/etc/dolby/dolby_vision.cfg
 odm/etc/media_codecs_dolby_vision.xml
 odm/lib64/libdolbyclstc.so
+
+# eUICC
+my_product/etc/permissions/EuiccGoogle_grant_permissions_list.xml:product/etc/permissions/privapp-permissions-euiccgoogle.xml
+my_product/priv-app/EuiccGoogle/EuiccGoogle.apk:product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
 
 # EVA firmware
 vendor/firmware/evass.b00
@@ -1814,10 +1818,6 @@ vendor/firmware/evass.b18
 vendor/firmware/evass.b19
 vendor/firmware/evass.mbn
 vendor/firmware/evass.mdt
-
-# eUICC
-my_product/etc/permissions/EuiccGoogle_grant_permissions_list.xml:product/etc/permissions/privapp-permissions-euiccgoogle.xml
-my_product/priv-app/EuiccGoogle/EuiccGoogle.apk:product/priv-app/EuiccGoogle/EuiccGoogle.apk;PRESIGNED
 
 # Fingerprint firmware
 odm/firmware/uff_gx.b00
