@@ -32,19 +32,10 @@ lib_fixups: lib_fixups_user_type = {
     **lib_fixups,
     (
         'libhcsutils',
-        'libPanelChaplin',
-        'libpwirisfeature',
         'vendor.oplus.hardware.camera.aon-V1-ndk',
         'vendor.oplus.hardware.camera_rfi-V3-ndk',
         'vendor.oplus.hardware.cammidasservice-V1-ndk',
-        'vendor.oplus.hardware.cwb-V2-ndk',
-        'vendor.oplus.hardware.displaycolorfeature-V1-ndk',
         'vendor.oplus.hardware.sendextcamcmd-V2-ndk',
-        'vendor.pixelworks.hardware.display@1.0',
-        'vendor.pixelworks.hardware.display@1.1',
-        'vendor.pixelworks.hardware.display@1.2',
-        'vendor.pixelworks.hardware.feature@1.0',
-        'vendor.pixelworks.hardware.feature@1.1',
     ): lib_fixup_vendor_suffix,
 }
 
@@ -79,11 +70,7 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
-    (
-        'odm/lib64/libAlgoProcess.so',
-        'vendor/lib64/libpwirishalwrapper.so',
-        'vendor/lib64/libsdmclient.so',
-    ): blob_fixup()
+    'odm/lib64/libAlgoProcess.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so'),
     'odm/lib64/liboprec_audrec.so': blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
@@ -94,16 +81,6 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
     ): blob_fixup()
         .replace_needed('android.hardware.graphics.allocator-V1-ndk.so', 'android.hardware.graphics.allocator-V2-ndk.so'),
-    (
-        'vendor/lib64/libcwb_qcom_aidl.so',
-        'vendor/lib64/libhwcsensor.so',
-        'vendor/lib64/libsdmclient.so',
-    ): blob_fixup()
-        .replace_needed('vendor.qti.hardware.display.config-V11-ndk.so', 'vendor.qti.hardware.display.config-V13-ndk.so'),
-    'vendor/lib64/libpwirishalwrapper.so': blob_fixup()
-        .replace_needed('android.hardware.graphics.composer3-V3-ndk.so', 'android.hardware.graphics.composer3-V4-ndk.so'),
-    'vendor/lib64/libsdmcore.so': blob_fixup()
-        .add_needed('libbase.so'),
 }  # fmt: skip
 
 module = ExtractUtilsModule(
