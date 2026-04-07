@@ -11,7 +11,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from infiniti device
 $(call inherit-product, device/oneplus/infiniti/device.mk)
 
-# Inherit some common Lineage stuff.
+# Inherit some common evolution stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_NAME := lineage_infiniti
@@ -19,16 +19,6 @@ PRODUCT_DEVICE := infiniti
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
 PRODUCT_MODEL := CPH2745
-
-TARGET_HAS_UDFPS := true
-TARGET_SUPPORTS_QUICK_TAP := true
-TARGET_DISABLE_EPPE := true
-WITH_GMS := true
-TARGET_INCLUDE_LIVE_WALLPAPERS := true
-BYPASS_CHARGE_SUPPORTED := true
-ENABLE_FINGERPRINT_OVERRIDE := false
-WITH_ADB_INSECURE := true
-WITH_SU := true
 
 EVO_BUILD_TYPE := Unofficial
 
@@ -41,3 +31,17 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     DeviceProduct=CPH2745 \
     SystemDevice=OP611FL1 \
     SystemName=CPH2745
+    
+BUILD_BCR := true    
+BYPASS_CHARGE_SUPPORTED := true
+ENABLE_FINGERPRINT_OVERRIDE := false
+TARGET_INCLUDE_LIVE_WALLPAPERS := true
+TARGET_SUPPORTS_QUICK_TAP := true
+TARGET_ENABLE_BLUR := true
+TARGET_SUPPORTS_BLUR := true
+TARGET_DISABLE_EPPE := true
+TARGET_HAS_UDFPS := true
+WITH_ADB_INSECURE := true
+WITH_GMS := true
+WITH_SU := true
+
