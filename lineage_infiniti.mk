@@ -25,9 +25,6 @@ EVO_BUILD_TYPE := Unofficial
 BYPASS_CHARGE_SUPPORTED := true
 TARGET_DISABLE_EPPE := true
 TARGET_HAS_UDFPS := true
-WITH_ADB_INSECURE := true
-WITH_GMS := true
-WITH_SU := true  
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
