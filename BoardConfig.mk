@@ -35,5 +35,8 @@ TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 # Recovery
 TARGET_RECOVERY_UI_MARGIN_HEIGHT := 103
 
+# Allow device/vendor-specific SELinux types without compat mapping entries (unofficial build)
+BUILD_BROKEN_TREBLE_SEPOLICY_NEW_PUBLIC_SYMBOLS := true
+
 # Include the proprietary files BoardConfig.
 include vendor/oneplus/infiniti/BoardConfigVendor.mk
