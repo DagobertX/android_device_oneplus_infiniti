@@ -838,7 +838,6 @@ odm/lib64/camera/components/com.oplus.node.sstabdefer.so
 odm/lib64/camera/components/com.oplus.node.sstabphoto.so
 odm/lib64/camera/components/com.oplus.node.sstabrealt.so
 odm/lib64/camera/components/com.oplus.node.videoainr.so
-odm/lib64/camera/components/com.oplus.node.videodehaze.so;DISABLE_CHECKELF
 odm/lib64/camera/components/com.oplus.node.videomlft.so
 odm/lib64/camera/components/com.oplus.stats.aec.so
 odm/lib64/camera/components/com.oplus.stats.af.so
@@ -953,7 +952,6 @@ odm/lib64/camera.oemlayer.adapter.so
 odm/lib64/camera.oemlayer.healthmonitor.so
 odm/lib64/camera.oemlayer.logger.so
 odm/lib64/camera.oemlayer.uilayer.so
-odm/lib64/hw/camera.oemlayer.v2.so;DISABLE_CHECKELF
 odm/lib64/com.oplus.mcx.linearmapper.so
 odm/lib64/com.oplus.node.preview.v2.so
 odm/lib64/lib2DSlender.so
