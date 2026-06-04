@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+
+     Relabels the OnePlus gallery (com.oneplus.gallery) launcher/app name from
+     "Photos" to "Gallery" so the home/drawer entry reads the name the user expects.
+     See .re-notes/sessions/2026-06-04-gallery-visibility.md (worker-1, 2026-06-04).
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.oneplus.gallery.overlay.label">
+    <application android:hasCode="false" />
+    <overlay android:targetPackage="com.oneplus.gallery"
+             android:isStatic="true"
+             android:priority="500" />
+</manifest>

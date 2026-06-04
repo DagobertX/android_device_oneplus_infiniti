@@ -10,6 +10,7 @@ odm/etc/acdbdata/up_ve_enpuv6_hh.eai
 
 # ADSP modules
 odm/lib/rfsa/adsp/libCalculator_skel.so
+odm/lib/libalogencrypt.so
 odm/lib/rfsa/adsp/libQnnHtpV81.so
 odm/lib/rfsa/adsp/libQnnHtpV81Skel.so
 odm/lib/rfsa/adsp/libQnnSaver.so
@@ -962,6 +963,7 @@ odm/lib64/libAFParamParser.so
 odm/lib64/libAIMotion.so
 odm/lib64/libAlgoInterface.so
 odm/lib64/libAlgoProcess.so
+odm/lib64/libalogencrypt.so
 odm/lib64/libAncFilter.so
 odm/lib64/libAncSegBaseSdk.so
 odm/lib64/libAncSegmentSdk.so

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+     SPDX-FileCopyrightText: The LineageOS Project
+     SPDX-License-Identifier: Apache-2.0
+-->
+<resources>
+    <!-- Overrides com.oneplus.gallery R.string.app_name ("Photos") so the launcher
+         entry reads "Gallery", the name the user looks for. -->
+    <string name="app_name">Gallery</string>
+</resources>
