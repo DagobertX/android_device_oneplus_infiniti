@@ -8,6 +8,9 @@
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := xxxhdpi
 
+# ART / Dexpreopt
+PRODUCT_USES_DEFAULT_ART_CONFIG := true
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/audio/audio_module_config_primary.xml:$(TARGET_COPY_OUT_VENDOR)/etc/audio/audio_module_config_primary.xml \
@@ -17,6 +20,12 @@ PRODUCT_COPY_FILES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2772
 TARGET_SCREEN_WIDTH := 1272
+
+# Enable dexpreopt
+WITH_DEXPREOPT := true
+WITH_DEXPREOPT_DEBUG_INFO := false
+DEX_PREOPT_DEFAULT := speed-profile
+PRODUCT_SYSTEM_SERVER_COMPILER_FILTER := speed-profile
 
 # Display
 PRODUCT_PACKAGES += \
