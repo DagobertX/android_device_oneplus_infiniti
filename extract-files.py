@@ -79,6 +79,18 @@ blob_fixups: blob_fixups_user_type = {
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
     'vendor/etc/libnfc-nci.conf': blob_fixup()
         .regex_replace('NFC_DEBUG_ENABLED=1', 'NFC_DEBUG_ENABLED=0'),
+    # NOTE (2026-06-08, worker-1, docs/rearch/14): KEEP this V1->V2 relink — it is
+    # a pure LOADABILITY fixup, NOT a behavior change. Both blobs carry a *vestigial*
+    # DT_NEEDED on allocator-V1-ndk (over-linked at build time) but import ZERO graphics
+    # allocator AIDL symbols (`nm -D -u` => only std::allocator<char> + allocate_camera_metadata).
+    # V1's exported symbol set is a strict SUBSET of V2 (43 ⊂ 54), and the libs that
+    # actually drive allocation (libui.so, mapper.qti.so) NEED only V2 — on OOS too.
+    # The real alloc path (libui -> mapper.qti.so -> display.allocator-service) is V2 on
+    # BOTH OOS and LOS with byte-identical gralloc binaries. => Providing the OOS
+    # allocator-V1-ndk.so on LOS would change NOTHING about P010 plane contiguity; the
+    # V1-allocator contiguity hypothesis is REFUTED. Do NOT drop this relink and do NOT
+    # ship V1 (would add a dead blob). The non-contiguity divergence is consumer-side
+    # (libAlgoProcess lockPlanes / graphics.common ABI), not in the allocation plumbing.
     (
         'vendor/lib64/camera/components/com.qti.node.dewarp.so',
         'vendor/lib64/vendor.qti.hardware.camera.offlinecamera-service-impl.so',
