@@ -41,10 +41,12 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
-    'odm/etc/camera/CameraHWConfiguration.config': blob_fixup()
-        # Disable face detection AE behaviour
-        .regex_replace(r'(enableSWfdForThirdCamUnit += )TRUE', r'\1FALSE')
-        .regex_replace(r'(fdSupport += )TRUE;', r'\1FALSE;'),
+    # NOTE (2026-06-08): the org baseline (waffle a56e075 "Disable face detection
+    # AE behavior") forced fdSupport / enableSWfdForThirdCamUnit TRUE -> FALSE.
+    # That overrides the OOS value (both TRUE in stock CameraHWConfiguration.config)
+    # and breaks the PC4/CoupleHDR SW face-detect plumbing the OplusCamera capture
+    # path relies on. Restore the OOS baseline by NOT rewriting these keys
+    # (facilitate, do not force).
     'odm/etc/init/init.camera_process.rc': blob_fixup()
         .regex_replace('    delete_recursion', '    #delete_recursion'),
     (

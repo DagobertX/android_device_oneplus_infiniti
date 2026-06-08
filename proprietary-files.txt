@@ -631,6 +631,7 @@ odm/etc/camera/livephoto_coverenhancer/libs/libsharebuffer.so;MODULE_SUFFIX=.liv
 odm/etc/camera/livephoto_coverenhancer/libs/libtrace.so;MODULE_SUFFIX=.livephoto
 odm/etc/camera/livephoto_coverenhancer/libs/libzlib.so;MODULE_SUFFIX=.livephoto
 odm/etc/camera/livephoto_coverenhancer/models/RRDBNet_sm8850.bin
+odm/etc/camera/livephoto_coverenhancer/models/license_release_gallery.lic
 odm/etc/camera/meishe_lut/800t_blues.bin
 odm/etc/camera/meishe_lut/800t_hdr.bin
 odm/etc/camera/meishe_lut/800t_sdr.bin
@@ -719,6 +720,7 @@ odm/etc/camera/meishe_lut/vivid-cool.cube.rgb.bin
 odm/etc/camera/meishe_lut/vivid-lut.cube.rgb.bin
 odm/etc/camera/meishe_lut/vivid-warm.cube.rgb.bin
 odm/etc/camera/model/DocDetectV15.xbin
+odm/etc/camera/model/license.lic
 odm/etc/camera/oplus_seg_sdk/oppseg.json
 odm/etc/camera/oplus_seg_sdk/oppseg_q.dlx
 odm/etc/camera/oplus_seg_sdk/petseg.json
@@ -796,6 +798,7 @@ odm/etc/camera/gamma_quick_sdr_conf.json
 odm/etc/camera/gamma_video_hdr_conf.json
 odm/etc/camera/gamma_video_sdr_conf.json
 odm/etc/camera/gm_tcs3449_golden
+odm/etc/camera/license_release_fdc.lic
 odm/etc/camera/main_inv_mapxy_33x25.bin
 odm/etc/camera/main_mapxy_33x25.bin
 odm/etc/camera/media_profiles.xml
