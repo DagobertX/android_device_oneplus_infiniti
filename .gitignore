@@ -1,2 +1,6 @@
 # OMC orchestration tooling state (local only)
 .omc/
+
+# Python bytecode cache (extract-utils helpers)
+__pycache__/
+*.pyc
