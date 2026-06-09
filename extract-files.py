@@ -73,6 +73,19 @@ blob_fixups: blob_fixups_user_type = {
         .clear_symbol_version('AHardwareBuffer_lockPlanes')
         .clear_symbol_version('AHardwareBuffer_release')
         .clear_symbol_version('AHardwareBuffer_unlock'),
+    # BasicTone R/B swap (docs/rearch/22 §A + 23). The Master/Pro-mode tone
+    # shader in libBasicTonePhoto.so writes its output with the Cb/Cr channels
+    # transposed: `dstYuv = vec4(dstYuv.r, dstYuv.b, dstYuv.g, 1.0)` reorders the
+    # green/blue components, producing R/B-swapped JPEGs in those modes. Confirmed
+    # present on infiniti/sm8850 (exact string match in our blob). Swap .b/.g back
+    # to the correct `(.r, .g, .b, 1.0)`. Length-preserving, string-anchored — no
+    # offset re-derivation. Normal/Photo mode does not route through BasicTone and
+    # is unaffected. Ported verbatim from spkal01/dodge.
+    'odm/lib64/libBasicTonePhoto.so': blob_fixup()
+        .binary_regex_replace(
+            b'vec4\\(dstYuv\\.r, dstYuv\\.b, dstYuv\\.g, 1\\.0\\)',
+            b'vec4(dstYuv.r, dstYuv.g, dstYuv.b, 1.0)',
+        ),
     'odm/lib64/libAlgoProcess.so': blob_fixup()
         .replace_needed('android.hardware.graphics.common-V5-ndk.so', 'android.hardware.graphics.common-V7-ndk.so')
         # P010 plane-layout fix at RUNTIME by libapsfixup.so (built from
