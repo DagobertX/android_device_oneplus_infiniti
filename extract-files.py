@@ -83,10 +83,11 @@ blob_fixups: blob_fixups_user_type = {
         # pitch, and a garbage p010 conversion length -> ~1 GB walk off a 36 MB dmabuf ->
         # SIGSEGV. The interposer corrects all three at runtime via GOT/PLT JUMP_SLOT redirect
         # (no code patch, no execmem); no-op on correct buffers. See docs/rearch/19,20 +
-        # vendor/oplus/camera-sm8850/apsfixup/docs/PORTING.md. The binary
-        # min()/described-height geometry patch on this blob STAYS as the proven fallback
-        # until libapsfixup is device-validated (apsfixup/docs/frida/op_chroma_repair.js),
-        # then drop it.
+        # vendor/oplus/camera-sm8850/apsfixup/docs/PORTING.md. libapsfixup is the SOLE
+        # in-tree P010 fix; the historical binary min()/described-height patch (f3f372e)
+        # was a manual on-device patch from a prior session, NOT in this tree. The shim's
+        # crash-prevention is offset-agnostic; only cosmetic chroma color is gated on frida
+        # validation (apsfixup/docs/frida/op_chroma_repair.js).
         .add_needed('libapsfixup.so'),
     'odm/lib64/liboprec_audrec.so': blob_fixup()
         .replace_needed('libstdc++.so', 'libstdc++_vendor.so'),
